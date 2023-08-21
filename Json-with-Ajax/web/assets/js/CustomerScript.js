@@ -64,7 +64,22 @@ $("#btnCusDelete").click(function(){
     });
 });
 
+/*
 $("#btnUpdate").click(function (){
+
+    let id = $('#txtCustomerID').val();
+    let name = $('#txtCustomerName').val();
+    let address = $('#txtCustomerAddress').val();
+    let salary = $('#txtCustomerSalary').val();
+
+    //json Object
+   let  a = {
+        "id":id,
+        "name":name,
+        "address":address,
+        "salary":salary
+    }
+
     let formData=$("#customerForm").serialize();
     $.ajax({
         url:'customer?option=update',
@@ -78,6 +93,32 @@ $("#btnUpdate").click(function (){
         error:function (error){
             console.log(error.responseJSON);
             alert(error.responseJSON.message);
+        }
+    });
+});*/
+$("#btnUpdate").click(function () {
+
+    let id = $("#txtCustomerID").val();
+    let name = $("#txtCustomerName").val();
+    let address = $("#txtCustomerAddress").val();
+    let salary = $("#txtCustomerSalary").val();
+
+    //json object
+    let a = {
+        "id": id,
+        "name": name,
+        "address": address,
+        "salary": salary
+    }
+
+
+    $.ajax({
+        url: 'customer',
+        method: 'put',
+        contentType:"application/json",
+        data:JSON.stringify(a),
+        success: function (resp) {
+            getAllCustomers();
         }
     });
 });
