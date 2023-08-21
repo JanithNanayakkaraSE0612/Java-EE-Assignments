@@ -18,7 +18,7 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/assignment", "root", "1234");
             PreparedStatement pstm = connection.prepareStatement("select * from Customer");
             ResultSet rst = pstm.executeQuery();
